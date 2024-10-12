@@ -1,14 +1,35 @@
-import './assets/main.css'
+import "./assets/main.css";
+import 'flag-icons/css/flag-icons.min.css';
+import PrimeVue from "primevue/config";
+import { createApp } from "vue";
+import { createPinia } from "pinia";
+import { createI18n } from "vue-i18n";
+import Aura from "@primevue/themes/aura";
+import "primeflex/primeflex.css";
+import "primeicons/primeicons.css";
+import App from "./App.vue";
+import router from "./router";
+import fr from "./languages/fr.json";
+import en from "./languages/en.json";
 
-import { createApp } from 'vue'
-import { createPinia } from 'pinia'
+const i18n = createI18n({
+  locale: "fr",
+  fallbackLocale: "en", 
+  messages: {
+    fr,
+    en,
+  },
+});
 
-import App from './App.vue'
-import router from './router'
+const app = createApp(App);
+app.use(PrimeVue, {
+  theme: {
+    preset: Aura,
+  },
+});
 
-const app = createApp(App)
+app.use(createPinia());
+app.use(router);
+app.use(i18n);
 
-app.use(createPinia())
-app.use(router)
-
-app.mount('#app')
+app.mount("#app");
