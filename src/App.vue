@@ -1,8 +1,8 @@
 <template>
   <div class="container">
     <div class="flags">
-      <span class="fi fi-fr ml-4 cursor-pointer flag"></span >
-      <span class="fi fi-gb ml-4 cursor-pointer flag"></span >
+      <span class="fi fi-fr mr-4 cursor-pointer flag" id="french"></span >
+      <span class="fi fi-gb mr-4 cursor-pointer flag" id="english"></span >
     </div>
     <header>
       <Header />
@@ -11,7 +11,10 @@
       <Intro />
     </section>
     <section>
-      < />
+      <Stack />
+    </section>
+    <section>
+      <Project />
     </section>
   </div>
   <RouterView />
@@ -19,12 +22,17 @@
 
 <script lang="ts">
 import { RouterLink, RouterView } from "vue-router";
-import Header from "../src/components/views/Header.vue";
-import Intro from "../src/components/views/Intro.vue";
+import Header from '@/components/views/Header.vue';
+import Intro from '@/components/views/Intro.vue';
+import Stack from "@/components/views/Stack.vue";
+import Project from "@/components/views/Projects.vue"
+
 export default {
   components: {
     Header,
     Intro,
+    Stack,
+    Project,
   },
 
   data() {
@@ -49,12 +57,14 @@ header, section {
 }
 .flags{
   position: absolute;
-  top: 2px;
-  left: 0;
+  top: 0;
+  right: 0;
   z-index: 10;
   font-size: 22px;
 }
 .flag:hover{
-  font-size: 24px;
+  transform: scale(1.15);
+  box-shadow: 0px 0px 5px #000000;
+
 }
 </style>

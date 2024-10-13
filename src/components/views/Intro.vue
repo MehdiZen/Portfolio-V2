@@ -28,7 +28,7 @@
           <p class="textContent">
             Paris, France – Dans un monde numérique en constante évolution, un
             jeune <b>talent</b> se démarque : <b>Mehdi</b> Zenati. <b>Développeur Full Stack</b>,
-            Mehdi ne se contente pas de maîtriser le code ; il transcende les
+            Mehdi ne se contente pas de maîtriser le code; il transcende les
             frontières du développement web avec une <b>passion</b> ardente et une
             <b>créativité</b> débordante.
           </p>
@@ -37,7 +37,7 @@
         <div class="container">
           <p class="titleContent">Parcours Académique Éloquent</p>
           <p class="textContent">
-            Originaire de la région parisienne, Mehdi a toujours été fasciné par la technologie et son potentiel illimité. Diplômé en intégration web de l'école Epitech, il allie <b>expertise technique</b> et <b>sens artistique</b>. Auparavant, il a enrichi son expérience en tant qu'assistant développeur web chez <b>Ubisoft</b>, où il a contribué à <b>l’élaboration de nouvelles fonctionnalités</b> et <b>collaboré</b> étroitement avec les équipes pour garantir une <b>expérience utilisateur optimale</b>.
+            Originaire de la région parisienne, Mehdi a toujours été fasciné par la technologie et son potentiel illimité. Diplômé en intégration web de l'école Epitech, il allie <b>expertise technique</b> et <b>sens artistique</b>. Auparavant, il a enrichi son expérience en tant qu'assistant développeur web chez <b>Ubisoft</b>, où il a contribué à <b>l’élaboration de nouvelles fonctionnalités</b> et <b>collaboré</b> étroitement avec les <b>équipes</b> pour garantir une <b>expérience utilisateur optimale</b>.
           </p>
         </div>
         <div class="divider"></div>
@@ -88,8 +88,6 @@
 </template>
 
 <script>
-import Image from 'primevue/image';
-
 export default {};
 </script>
 
