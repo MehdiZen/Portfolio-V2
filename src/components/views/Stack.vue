@@ -59,19 +59,139 @@
             mysql> SELECT * FROM {{ currentStack }} ORDER BY name DESC;
             <span class="cursor4 blink">_</span>
           </p>
-          <div v-if="currentStack === 'languages'">
-            <div v-for="(item, index) in languages" :key="index">
-              <b>{{ item }}</b>
+
+          <div v-if="currentStack === 'languages'" class="table-container">
+            <div class="table-wrapper">
+              <table class="sql-table">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>name</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr
+                    v-for="(item, index) in splitArray(languages)[0]"
+                    :key="index"
+                  >
+                    <td>{{ index + 1 }}</td>
+                    <td>
+                      <b>{{ item }}</b>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <table
+                v-if="splitArray(languages)[1].length > 0"
+                class="sql-table"
+              >
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>name</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr
+                    v-for="(item, index) in splitArray(languages)[1]"
+                    :key="index"
+                  >
+                    <td>{{ index + 9 }}</td>
+                    <td>
+                      <b>{{ item }}</b>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
-          <div v-if="currentStack === 'frameworks'">
-            <div v-for="(item, index) in frameworks" :key="index">
-              <b>{{ item }}</b>
+
+          <div v-if="currentStack === 'frameworks'" class="table-container">
+            <div class="table-wrapper">
+              <table class="sql-table">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>name</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr
+                    v-for="(item, index) in splitArray(frameworks)[0]"
+                    :key="index"
+                  >
+                    <td>{{ index + 1 }}</td>
+                    <td>
+                      <b>{{ item }}</b>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <table
+                v-if="splitArray(frameworks)[1].length > 0"
+                class="sql-table"
+              >
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>name</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr
+                    v-for="(item, index) in splitArray(frameworks)[1]"
+                    :key="index"
+                  >
+                    <td>{{ index + 9 }}</td>
+                    <td>
+                      <b>{{ item }}</b>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
-          <div v-if="currentStack === 'techEnv'">
-            <div v-for="(item, index) in techEnv" :key="index">
-              <b>{{ item }}</b>
+
+          <div v-if="currentStack === 'techEnv'" class="table-container">
+            <div class="table-wrapper">
+              <table class="sql-table">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>name</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr
+                    v-for="(item, index) in splitArray(techEnv)[0]"
+                    :key="index"
+                  >
+                    <td>{{ index + 1 }}</td>
+                    <td>
+                      <b>{{ item }}</b>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <table v-if="splitArray(techEnv)[1].length > 0" class="sql-table">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>name</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr
+                    v-for="(item, index) in splitArray(techEnv)[1]"
+                    :key="index"
+                  >
+                    <td>{{ index + 9 }}</td>
+                    <td>
+                      <b>{{ item }}</b>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
@@ -146,13 +266,59 @@ export default defineComponent({
     handleClick(title: string) {
       this.currentStack = title;
       this.isStackVisible = true;
-      console.log(this.currentStack);
+
+      const containers = document.querySelectorAll(".container");
+      containers.forEach((container) => {
+        container.classList.remove("active");
+      });
+
+      const clickedContainer = document.querySelector(`.${title}`);
+      if (clickedContainer) {
+        clickedContainer.classList.add("active");
+      }
+    },
+    splitArray(array: string[]) {
+      return [array.slice(0, 8), array.slice(8)];
     },
   },
 });
 </script>
 
 <style scoped>
+.table-container {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 10px;
+}
+
+.table-wrapper {
+  display: flex;
+  align-items: flex-start; /* Alignement en haut pour chaque tableau */
+  width: 100%;
+}
+
+.sql-table {
+  border-collapse: collapse;
+  width: 20%;
+  font-size: 12px;
+  font-family: monospace;
+  color: #00fa00;
+  min-height: 25px;
+  margin-right: 10px;
+}
+
+.sql-table th,
+.sql-table td {
+  border: 1px solid green;
+  padding: 1px;
+  text-align: left;
+}
+
+.sql-table th {
+  font-weight: bold;
+}
+
 .containerWrapper {
   display: flex;
   justify-content: space-between;
@@ -160,6 +326,7 @@ export default defineComponent({
   padding: 20px 50px;
   margin-top: 20px;
 }
+
 .stack-container {
   opacity: 0;
   transition:
@@ -172,6 +339,7 @@ export default defineComponent({
   opacity: 1;
   transform: translateY(0);
 }
+
 .container {
   font-family: monospace;
   color: #fff;
@@ -193,6 +361,11 @@ export default defineComponent({
   transform: scale(1.05);
   box-shadow: 0px 0px 25px #00d742;
   transition: transform 0.3s ease;
+}
+.container.active {
+  transform: scale(1.1); 
+  box-shadow: 0px 0px 40px #00d742;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .languages {
@@ -269,7 +442,7 @@ h3 {
 .fakeScreen {
   background-color: #151515;
   box-sizing: border-box;
-  height: 100vh;
+  height: 97.5vh;
   width: 100vw;
   margin: 0 auto;
   padding: 20px;
@@ -282,7 +455,7 @@ h3 {
 .line3,
 .line4 {
   text-align: left;
-  font-size: 1.25em;
+  font-size: 1em;
   font-family: monospace;
   white-space: normal;
   overflow: hidden;
@@ -296,10 +469,10 @@ span {
 
 .line1 {
   color: #9cd9f0;
-  -webkit-animation: type 0.5s 1s steps(20, end) forwards;
-  -moz-animation: type 0.5s 1s steps(20, end) forwards;
-  -o-animation: type 0.5s 1s steps(20, end) forwards;
-  animation: type 0.5s 1s steps(20, end) forwards;
+  -webkit-animation: type 2.5s 1s steps(83, end) forwards;
+  -moz-animation: type 2.5s 1s steps(83, end) forwards;
+  -o-animation: type 2.5s 1s steps(83, end) forwards;
+  animation: type 2.5s 1s steps(83, end) forwards;
 }
 
 .cursor1 {
@@ -311,10 +484,10 @@ span {
 
 .line2 {
   color: #fa0000;
-  -webkit-animation: type 0.5s 4.25s steps(20, end) forwards;
-  -moz-animation: type 0.5s 4.25s steps(20, end) forwards;
-  -o-animation: type 0.5s 4.25s steps(20, end) forwards;
-  animation: type 0.5s 4.25s steps(20, end) forwards;
+  -webkit-animation: type 2.5s 4.25s steps(21, end) forwards;
+  -moz-animation: type 2.5s 4.25s steps(21, end) forwards;
+  -o-animation: type 2.5s 4.25s steps(21, end) forwards;
+  animation: type 2.5s 4.25s steps(21, end) forwards;
 }
 
 .cursor2 {
@@ -326,10 +499,10 @@ span {
 
 .line3 {
   color: #00fa00;
-  -webkit-animation: type 0.5s 7.5s steps(20, end) forwards;
-  -moz-animation: type 0.5s 7.5s steps(20, end) forwards;
-  -o-animation: type 0.5s 7.5s steps(20, end) forwards;
-  animation: type 0.5s 7.5s steps(20, end) forwards;
+  -webkit-animation: type 2.5s 7.5s steps(51, end) forwards;
+  -moz-animation: type 2.5s 7.5s steps(51, end) forwards;
+  -o-animation: type 2.5s 7.5s steps(51, end) forwards;
+  animation: type 2.5s 7.5s steps(51, end) forwards;
 }
 
 .cursor3 {
@@ -341,10 +514,10 @@ span {
 
 .line4 {
   color: #00fa00;
-  -webkit-animation: type 0.5s 10.75s steps(20, end) forwards;
-  -moz-animation: type 0.5s 10.75s steps(20, end) forwards;
-  -o-animation: type 0.5s 10.75s steps(20, end) forwards;
-  animation: type 0.5s 10.75s steps(20, end) forwards;
+  -webkit-animation: type 2.5s 10.75s steps(30, end) forwards;
+  -moz-animation: type 2.5s 10.75s steps(30, end) forwards;
+  -o-animation: type 2.5s 10.75s steps(30, end) forwards;
+  animation: type 2.5s 10.75s steps(30, end) forwards;
 }
 
 .cursor4 {
@@ -356,6 +529,49 @@ span {
 .database {
   font-family: monospace;
   color: #00fa00;
+}
+@media (max-width: 768px) {
+  .container {
+    font-size: 1.1em;
+    height: 15vh;
+    width: 45%;
+    text-shadow: 2px 1px 3px black;
+    flex: 1 1 33%;
+    max-width: 35%;
+  }
+  .container.active {
+  transform: scale(1.1); 
+  box-shadow: 0px 0px 5px #00d742;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+  h3 {
+    font-size: 1em;
+  }
+
+  .stackText {
+    font-size: 0.9em;
+  }
+
+  .sql-table {
+    font-size: 10px; /* Plus petit pour les petits écrans */
+  }
+
+  .line1,
+  .line2,
+  .line3,
+  .line4 {
+    font-size: 0.9em; /* Plus petit aussi */
+  }
+
+  .containerWrapper {
+    padding: 10px 0px;
+    margin-top: 10px;
+    gap: 10px; /* Espace entre les containers horizontalement */
+  }
+
+  .sql-table {
+    width: 100%; /* Utiliser toute la largeur sur petit écran */
+  }
 }
 @-webkit-keyframes blink {
   0% {
@@ -431,25 +647,25 @@ span {
 
 @-webkit-keyframes type {
   to {
-    width: 17em;
+    width: 100%;
   }
 }
 
 @-moz-keyframes type {
   to {
-    width: 17em;
+    width: 100%;
   }
 }
 
 @-o-keyframes type {
   to {
-    width: 17em;
+    width: 100%;
   }
 }
 
 @keyframes type {
   to {
-    width: 17em;
+    width: 100%;
   }
 }
 </style>

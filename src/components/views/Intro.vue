@@ -1,214 +1,371 @@
 <template>
   <div class="h-screen w-full max-w-screen bod">
-    <div class="head">
-      <div class="headerobjectswrapper">
-        <div class="weatherforcastbox">
-          <span style="font-style: italic"
-            >Weather forecast for the next 24 hours: Plenty of Sunshine</span
-          ><br />
-          <span>Wind: 11km/h SSE; Temp: 24°C; Humidity: 42%</span>
+    <div class="h-screen w-full journal" ref="observedSection">
+      <div class="head">
+        <div class="headerobjectswrapper">
+          <div class="weatherforcastbox">
+            <span style="font-style: italic">{{ weatherInfo }}</span
+            ><br />
+            <span
+              >Wind: {{ windSpeed }}; Temp: {{ temperature }}°C; Humidity:
+              {{ humidity }}%</span
+            >
+          </div>
+          <header>Frame-York Buggle</header>
         </div>
-        <header>FrameYork Buggle</header>
+        <div class="subhead">Paris, FR - {{ dateInfo }}</div>
       </div>
-
-      <div class="subhead">
-        York, MA - Monday October 14, 2024 - One Page ~french edition~
+      <div>
+        <div
+          class="flex flex-column justify-content-end align-items-center center"
+        >
+          <h1>L'étoile montante du développement web</h1>
+        </div>
+        <div class="container-wrapper">
+          <div class="container">
+            <p class="titleContent">Un Jeune Talent Émergent</p>
+            <p class="textContent">
+              Paris, France – Dans un monde numérique en constante évolution, un
+              jeune <b>talent</b> se démarque : <b>Mehdi</b> Zenati.
+              <b>Développeur Full Stack</b>, Mehdi ne se contente pas de
+              maîtriser le code; il transcende les frontières du développement
+              web avec une <b>passion</b> ardente et une
+              <b>créativité</b> débordante.
+            </p>
+          </div>
+          <div class="divider"></div>
+          <div class="container">
+            <p class="titleContent">Parcours Académique Éloquent</p>
+            <p class="textContent">
+              Originaire de la région parisienne, Mehdi a toujours été fasciné
+              par la technologie et son potentiel illimité. Diplômé en
+              intégration web de l'école Epitech, il allie
+              <b>expertise technique</b> et <b>sens artistique</b>. Auparavant,
+              il a enrichi son expérience en tant qu'assistant développeur web
+              chez <b>Ubisoft</b>, où il a contribué à
+              <b>l’élaboration de nouvelles fonctionnalités</b> et
+              <b>collaboré</b> étroitement avec les <b>équipes</b> pour garantir
+              une <b>expérience utilisateur optimale</b>.
+            </p>
+          </div>
+          <div class="divider"></div>
+          <div class="container">
+            <p class="titleContent">Compétences Techniques Diversifiées</p>
+            <p class="textContent">
+              <b>Polyvalent</b> et <b>curieux</b>, Mehdi manie avec aisance des
+              langages tels que <b>JavaScript</b> et <b>TypeScript</b>, tout en
+              jonglant avec des frameworks modernes comme <b>Vue.js</b> et
+              <b>Node.js</b>. Mais ce n’est pas tout : son savoir-faire ne
+              s’arrête pas là. Grâce à son approche <b>agile</b> et son
+              expertise en gestion de projet, il s'assure que chaque ligne de
+              code ne soit pas seulement fonctionnelle, mais également conçue
+              avec soin.
+            </p>
+          </div>
+        </div>
+        <div class="container-wrapper">
+          <div class="container">
+            <p class="titleContent">Un Esprit Compétitif et Créatif</p>
+            <p class="textContent">
+              En dehors de son travail, Mehdi est un fervent amateur de sports,
+              notamment le <b>basket-ball</b> et le <b>kick-boxing</b>,
+              reflétant ainsi son <b>esprit de compétition</b> et sa
+              <b>discipline</b>. Également passionné par la culture geek, il
+              trouve du réconfort dans les <b>jeux vidéo</b> et les
+              <b>comic books</b>, prouvant que le <b>développeur idéal</b> allie
+              à la fois <b>rigueur technique</b> et <b>créativité</b>.
+            </p>
+          </div>
+          <div class="divider"></div>
+          <div class="container">
+            <p class="titleContent">Une Ambition sans Limites</p>
+            <p class="textContent">
+              Avec une ambition sans limite et un désir constant
+              d'<b>apprendre</b>, Mehdi Zenati est sans conteste un nom à
+              retenir dans le paysage numérique de demain. Sa détermination et
+              sa vision novatrice ne manqueront pas de faire parler d’elles.
+            </p>
+          </div>
+          <div class="container">
+            <p class="titleContent"></p>
+            <img src="../../assets/goodDev.gif" />
+          </div>
+        </div>
       </div>
-    </div>
-    <div>
+      <hr>
       <div
-        class="flex flex-column justify-content-end align-items-center center mr-7"
-      >
-        <h1>L'étoile montante du développement web</h1>
-      </div>
-      <div class="container-wrapper">
-        <div class="container">
-          <p class="titleContent">Un Jeune Talent Émergent
-          </p>
-          <p class="textContent">
-            Paris, France – Dans un monde numérique en constante évolution, un
-            jeune <b>talent</b> se démarque : <b>Mehdi</b> Zenati. <b>Développeur Full Stack</b>,
-            Mehdi ne se contente pas de maîtriser le code; il transcende les
-            frontières du développement web avec une <b>passion</b> ardente et une
-            <b>créativité</b> débordante.
-          </p>
+          class="flex flex-column justify-content-end align-items-center center"
+        >
+          <h1>Un justicier masqué aperçu à Paris</h1>
         </div>
-        <div class="divider"></div>
-        <div class="container">
-          <p class="titleContent">Parcours Académique Éloquent</p>
-          <p class="textContent">
-            Originaire de la région parisienne, Mehdi a toujours été fasciné par la technologie et son potentiel illimité. Diplômé en intégration web de l'école Epitech, il allie <b>expertise technique</b> et <b>sens artistique</b>. Auparavant, il a enrichi son expérience en tant qu'assistant développeur web chez <b>Ubisoft</b>, où il a contribué à <b>l’élaboration de nouvelles fonctionnalités</b> et <b>collaboré</b> étroitement avec les <b>équipes</b> pour garantir une <b>expérience utilisateur optimale</b>.
-          </p>
+        <div class="container-wrapper">
+          <div class="container">
+            <p class="titleContent">Il Sème le Mystère dans la Capitale
+            </p>
+            <p class="textContent">
+              Un justicier masqué a été aperçu plusieurs fois dans les rues de Paris, notamment dans les quartiers du Marais et de Belleville. Vêtu de noir, il intervient pour résoudre des altercations mineures et semble toujours disparaître avant l'arrivée des autorités. Les rumeurs courent sur son identité, mais jusqu'à présent, personne n'a pu lever le voile sur cet énigmatique personnage.
+            </p>
+          </div>
+          <div class="divider"></div>
+          <div class="container">
+            <p class="titleContent">Une Habileté Hors du Commun</p>
+            <p class="textContent">
+              Les témoins rapportent que le justicier possède une agilité impressionnante et une connaissance surprenante des technologies urbaines. Certains parlent même de piratage informatique, ce qui alimente encore plus les spéculations sur ses origines. Selon quelques insiders anonymes, il pourrait bien s’agir d’un expert en code.
+            </p>
+          </div>
+          <div class="divider"></div>
+          <div class="container">
+            <p class="titleContent">Le Mystère Persiste
+            </p>
+            <p class="textContent">
+              Un détail curieux a été remarqué par ceux qui l’ont croisé : il porte sur sa poitrine un logo en forme de "V" vert, similaire à celui du framework Vue.js. Une coïncidence troublante pour ceux qui connaissent le milieu du développement web, et qui pourrait bien révéler des indices sur sa véritable identité.
+</p>
+          </div>
         </div>
-        <div class="divider"></div>
-        <div class="container">
-          <p class="titleContent">Compétences Techniques Diversifiées
-          </p>
-          <p class="textContent">
-            <b>Polyvalent</b> et <b>curieux</b>, Mehdi manie avec aisance des langages tels
-            que <b>JavaScript</b> et <b>TypeScript</b>, tout en jonglant avec des frameworks
-            modernes comme <b>Vue.js</b> et <b>Node.js</b>. Mais ce n’est pas tout : son
-            savoir-faire ne s’arrête pas là. Grâce à son approche <b>agile</b> et son
-            expertise en gestion de projet, il s'assure que chaque ligne de code
-            ne soit pas seulement fonctionnelle, mais également conçue avec
-            soin.
-          </p>
-        </div>
-      </div>
-      <div class="container-wrapper">
-        <div class="container">
-          <p class="titleContent">Un Esprit Compétitif et Créatif
-          </p>
-          <p class="textContent">
-            En dehors de son travail, Mehdi est un fervent amateur de sports,
-            notamment le <b>basket-ball</b> et le <b>kick-boxing</b>, reflétant ainsi son
-            <b>esprit de compétition</b> et sa <b>discipline</b>. Également passionné par la
-            culture geek, il trouve du réconfort dans les <b>jeux vidéo</b> et les
-            <b>comic books</b>, prouvant que le <b>développeur idéal</b> allie à la fois
-            <b>rigueur technique</b> et <b>créativité</b>.
-          </p>
-        </div>
-        <div class="divider"></div> 
-        <div class="container">
-          <p class="titleContent">Une Ambition sans Limites</p>
-          <p class="textContent">
-            Avec une ambition sans limite et un désir constant d'<b>apprendre</b>,
-            Mehdi Zenati est sans conteste un nom à retenir dans le paysage
-            numérique de demain. Sa détermination et sa vision novatrice ne
-            manqueront pas de faire parler d’elles.
-          </p>
-        </div>
-        <div class="container">
-          <p class="titleContent"></p>
-          <img src="../../assets/goodDev.gif"/>
-        </div>
-      </div>
     </div>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      weatherInfo: "Weather forecast for the next 24 hours: Plenty of Sunshine",
+      windSpeed: "11km/h SSE",
+      temperature: 24,
+      humidity: 42,
+      dateInfo: "",
+    };
+  },
+  async mounted() {
+    const response = await fetch(
+      "https://worldtimeapi.org/api/timezone/Europe/Paris"
+    );
+    const data = await response.json();
+    const dateOptions = {
+      weekday: "long",
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    };
+    this.dateInfo = new Date(data.datetime).toLocaleDateString(
+      "en-US",
+      dateOptions
+    );
+
+    const apiKey = "1172a4c644a6024fb268a0bf31b686a7";
+    const weatherResponse = await fetch(
+      `https://api.openweathermap.org/data/2.5/weather?q=Paris&appid=${apiKey}&units=metric`
+    );
+    const weatherData = await weatherResponse.json();
+    this.weatherInfo = `Weather forecast for the next 24 hours: ${weatherData.weather[0].description.charAt(0).toUpperCase() + weatherData.weather[0].description.slice(1)}`;
+    this.windSpeed = `${weatherData.wind.speed} m/s ${this.getWindDirection(weatherData.wind.deg)}`;
+    this.temperature = Math.round(weatherData.main.temp);
+    this.humidity = weatherData.main.humidity;
+
+    // Setup the Intersection Observer
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          // When the section comes into view
+          this.startAnimation();
+          observer.unobserve(this.$refs.observedSection); // Stop observing after the first trigger
+        }
+      });
+    });
+
+    observer.observe(this.$refs.observedSection);
+  },
+  methods: {
+    getWindDirection(degrees) {
+      const directions = ["N", "NE", "E", "SE", "S", "SW", "W", "NW"];
+      const index = Math.round((degrees % 360) / 45);
+      return directions[index % 8];
+    },
+    startAnimation() {
+      this.$refs.observedSection.classList.add("animate"); // Add a class to trigger the animation
+    },
+  },
+};
 </script>
 
 <style scoped>
+@keyframes spin-grow {
+  0% {
+    transform: rotate(0deg) scale(0) translate(200px, -200px); /* Départ du coin supérieur droit */
+    opacity: 1;
+    filter: blur(5px);
+  }
+  10% {
+    transform: rotate(360deg) scale(0.1) translate(150px, -150px);
+    opacity: 1;
+    filter: blur(5px);
+  }
+  20% {
+    transform: rotate(720deg) scale(0.1) translate(100px, -100px);
+    opacity: 1;
+    filter: blur(5px);
+  }
+  30% {
+    transform: rotate(1080deg) scale(0.2) translate(50px, -50px);
+    opacity: 1;
+    filter: blur(5px);
+  }
+  40% {
+    transform: rotate(1440deg) scale(0.2) translate(0px, 0px); /* Approche du centre */
+    opacity: 1;
+    filter: blur(5px);
+  }
+  50% {
+    transform: rotate(1800deg) scale(0.3) translate(0, 0);
+    opacity: 1;
+    filter: blur(5px);
+  }
+  60% {
+    transform: rotate(2160deg) scale(0.4) translate(0, 0);
+    opacity: 1;
+    filter: blur(5px);
+  }
+  70% {
+    transform: rotate(2520deg) scale(0.5) translate(0, 0);
+    opacity: 1;
+    filter: blur(5px);
+  }
+  80% {
+    transform: rotate(2880deg) scale(0.6) translate(0, 0);
+    opacity: 1;
+    filter: blur(5px);
+  }
+  90% {
+    transform: rotate(3240deg) scale(0.8) translate(0, 0);
+    opacity: 1;
+    filter: blur(5px);
+  }
+  100% {
+    transform: rotate(3600deg) scale(1) translate(0, 0);
+    opacity: 1;
+    filter: blur(5px);
+  }
+}
+.animate {
+  animation: spin-grow 1.2s linear;
+}
+
 .bod {
   font-family: "Droid Serif", serif;
-  font-size: 14px;
+  font-size: 1vw;
   color: #2f2f2f;
+  background: url("https://i.pinimg.com/originals/5b/b1/3b/5bb13b2f73e906861918ddbde3eb09f0.jpg");
+  background-position: center;
+  background-repeat: repeat;
+  background-size:contain;
+  padding: 1px;
+  height: 100vh;
+  overflow: hidden;
+}
+.journal {
   background-color: #f9f7f1;
 }
+
 h1 {
   font-family: "Droid Serif", serif;
-  font-size: 60px;
+  font-size: 2.5vw;
+  text-align: center;
+  margin: 10 0;
 }
 header {
   font-family: "Playfair Display", serif;
   font-weight: 900;
-  font-size: 80px;
+  font-size: 4vw;
   text-transform: uppercase;
   display: inline-block;
-  line-height: 72px;
-  margin-bottom: 20px;
+  line-height: 1.2;
+  margin-bottom: 30px;
 }
 p {
-  margin-top: 0;
-  margin-bottom: 20px;
+  margin: 0;
+  margin-bottom: 0.5vw;
 }
 .container-wrapper {
   display: flex;
-  margin: 20px 15rem;
-  position: relative;
-
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 10px 2vw;
 }
 .container {
-  padding: 30px;
+  padding: 10px;
   flex: 1;
-  margin: 0 15px;
-  text-align: left;
-  text-align: justify; 
-  max-width: 540px;
-  font-family: "Old Standard TT", serif; /* Application de la police Old Standard TT */
-
+  max-width: 48%;
+  text-align: justify;
+  font-family: "Old Standard TT", serif;
 }
 .divider {
-  width: 2px; 
-  background-color: #2f2f2f; 
-  height: 200px; 
-  margin: 0 20px;
-  align-self: center; 
+  width: 1px;
+  background-color: #2f2f2f;
+  height: 100px;
+  margin: 0 10px;
 }
-
 .titleContent {
   font-family: "Droid Serif", serif;
-  font-size: 30px;
+  font-size: 1.6vw;
   font-weight: bold;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
   color: #111111;
 }
 .textContent {
   font-family: "Droid Serif", serif;
-  font-size: 20px;
-  line-height: 1.6;
+  font-size: 1vw;
+  line-height: 1.4;
   color: #000000;
 }
-
 .head {
   text-align: center;
   position: relative;
+  margin-bottom: 5px;
 }
-
 .subhead {
   text-transform: uppercase;
   border-bottom: 2px solid #2f2f2f;
   border-top: 2px solid #2f2f2f;
-  padding: 12px 0 12px 0;
+  padding: 5px 0;
+  font-size: 1vw;
 }
 .weatherforcastbox {
-  position: relative;
-  width: 12%;
+  position: absolute;
+  top: 10px;
   left: 10px;
+  width: 10vw;
   border: 3px double #2f2f2f;
-  padding: 10px 15px 10px 15px;
-  line-height: 20px;
-  display: inline-block;
-  margin: 0 50px 20px -360px;
+  padding: 5px;
+  font-size: 0.8vw;
 }
-.media {
-  -webkit-filter: sepia(80%) contrast(1) opacity(0.8);
-  filter: sepia(80%) grayscale(1) contrast(1) opacity(0.8);
-  mix-blend-mode: multiply;
-  width: 100%;
+@media (max-width: 1300px) {
 }
-
-@media only all and (max-width: 1300px) {
-  .weatherforcastbox {
-    display: none;
+@media (max-width: 900px) {
+  .container {
+    max-width: 48%; /* Permet d'avoir deux conteneurs par ligne */
+    flex: 1 1 48%; /* Assure que chaque conteneur prend 48% de l'espace disponible */
   }
-}
-@media only all and (max-width: 1200px) {
-  .collumn {
-    width: 31%;
+  h1 {
+    font-size: 5vw; /* Augmente la taille de la police du titre principal */
   }
-}
-@media only all and (max-width: 900px) {
-  .collumn {
-    width: 47%;
+  header{
+    margin-top: 30px;
+    margin-bottom: 15px;
+    font-size: 6vw;
   }
-}
-@media only all and (max-width: 600px) {
-  .collumn {
-    width: 100%;
+  .titleContent {
+    font-size: 3vw; /* Augmente la taille de la police des titres des conteneurs */
   }
-  .collumn + .collumn {
-    border-left: none;
-    border-bottom: 1px solid #2f2f2f;
+  .textContent {
+    font-size: 2.2vw; /* Augmente la taille de la police du texte des conteneurs */
   }
-  header {
-    max-width: 320px;
-    font-size: 60px;
-    line-height: 54px;
-    overflow: hidden;
+  img {
+    width: 100%; /* Assure que l'image prend toute la largeur de son conteneur */
+    height: auto; /* Maintient le ratio d'aspect de l'image */
+  }
+  .divider {
+    display: none; /* Cache le diviseur pour un aspect plus propre */
   }
 }
 </style>
