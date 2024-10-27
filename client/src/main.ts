@@ -8,9 +8,10 @@ import Aura from "@primevue/themes/aura";
 import "primeflex/primeflex.css";
 import "primeicons/primeicons.css";
 import App from "./App.vue";
-import router from "./router";
+import router from "./router/index.js";
 import fr from "./languages/fr.json";
 import en from "./languages/en.json";
+
 
 const i18n = createI18n({
   locale: "fr",

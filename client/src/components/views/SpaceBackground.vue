@@ -24,13 +24,13 @@ export default {
         .querySelector(".wormhole-container")
         ?.appendChild(renderer.domElement);
 
-      const particleCount = 1000;
+      const particleCount = 3000;
       const particles = new THREE.BufferGeometry();
       const positions = new Float32Array(particleCount * 3);
       const colors = new Float32Array(particleCount * 3);
 
       for (let i = 0; i < particleCount; i++) {
-        positions[i * 3] = (Math.random() - 0.5) * 300;
+        positions[i * 3] = (Math.random() - 0.5) * 900;
         positions[i * 3 + 1] = (Math.random() - 0.5) * 300;
         positions[i * 3 + 2] = Math.random() * -300;
 
@@ -98,11 +98,11 @@ export default {
           particleSystem.geometry.attributes.position.array[i * 3 + 2] =
             Math.random() * -300;
           particleSystem.geometry.attributes.position.array[i * 3] =
-            (Math.random() - 0.5) * 300; // X: entre -150 et 150
+            (Math.random() - 0.5) * 900; // X: entre -150 et 150
           particleSystem.geometry.attributes.position.array[i * 3 + 1] =
             (Math.random() - 0.5) * 300; // Y: entre -150 et 150
         }
-        particleSystem.geometry.attributes.position.needsUpdate = true; // Informer THREE.js que les positions ont changé
+        particleSystem.geometry.attributes.position.needsUpdate = true;
       }, 20000);
 
       window.addEventListener("resize", () => {

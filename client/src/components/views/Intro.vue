@@ -88,40 +88,52 @@
           </div>
           <div class="container">
             <p class="titleContent"></p>
-            <img src="../../assets/goodDev.gif" />
+            <img class="gif" src="../../assets/goodDev.gif" />
           </div>
         </div>
       </div>
-      <hr>
+      <hr />
       <div
-          class="flex flex-column justify-content-end align-items-center center"
-        >
-          <h1>Un justicier masqué aperçu à Paris</h1>
+        class="flex flex-column justify-content-end align-items-center center"
+      >
+        <h1>Un justicier masqué aperçu à Paris</h1>
+      </div>
+      <div class="container-wrapper">
+        <div class="container">
+          <p class="titleContent">Il Sème le Mystère dans la Capitale</p>
+          <p class="textContent">
+            Un justicier masqué a été aperçu plusieurs fois dans les rues de
+            Paris, notamment dans les quartiers du Marais et de Belleville. Vêtu
+            de noir, il intervient pour résoudre des altercations mineures et
+            semble toujours disparaître avant l'arrivée des autorités. Les
+            rumeurs courent sur son identité, mais jusqu'à présent, personne n'a
+            pu lever le voile sur cet énigmatique personnage.
+          </p>
         </div>
-        <div class="container-wrapper">
-          <div class="container">
-            <p class="titleContent">Il Sème le Mystère dans la Capitale
-            </p>
-            <p class="textContent">
-              Un justicier masqué a été aperçu plusieurs fois dans les rues de Paris, notamment dans les quartiers du Marais et de Belleville. Vêtu de noir, il intervient pour résoudre des altercations mineures et semble toujours disparaître avant l'arrivée des autorités. Les rumeurs courent sur son identité, mais jusqu'à présent, personne n'a pu lever le voile sur cet énigmatique personnage.
-            </p>
-          </div>
-          <div class="divider"></div>
-          <div class="container">
-            <p class="titleContent">Une Habileté Hors du Commun</p>
-            <p class="textContent">
-              Les témoins rapportent que le justicier possède une agilité impressionnante et une connaissance surprenante des technologies urbaines. Certains parlent même de piratage informatique, ce qui alimente encore plus les spéculations sur ses origines. Selon quelques insiders anonymes, il pourrait bien s’agir d’un expert en code.
-            </p>
-          </div>
-          <div class="divider"></div>
-          <div class="container">
-            <p class="titleContent">Le Mystère Persiste
-            </p>
-            <p class="textContent">
-              Un détail curieux a été remarqué par ceux qui l’ont croisé : il porte sur sa poitrine un logo en forme de "V" vert, similaire à celui du framework Vue.js. Une coïncidence troublante pour ceux qui connaissent le milieu du développement web, et qui pourrait bien révéler des indices sur sa véritable identité.
-</p>
-          </div>
+        <div class="divider"></div>
+        <div class="container">
+          <p class="titleContent">Une Habileté Hors du Commun</p>
+          <p class="textContent">
+            Les témoins rapportent que le justicier possède une agilité
+            impressionnante et une connaissance surprenante des technologies
+            urbaines. Certains parlent même de piratage informatique, ce qui
+            alimente encore plus les spéculations sur ses origines. Selon
+            quelques insiders anonymes, il pourrait bien s’agir d’un expert en
+            code.
+          </p>
         </div>
+        <div class="divider"></div>
+        <div class="container">
+          <p class="titleContent">Le Mystère Persiste</p>
+          <p class="textContent">
+            Un détail curieux a été remarqué par ceux qui l’ont croisé : il
+            porte sur sa poitrine un logo en forme de "V" vert, similaire à
+            celui du framework Vue.js. Une coïncidence troublante pour ceux qui
+            connaissent le milieu du développement web, et qui pourrait bien
+            révéler des indices sur sa véritable identité.
+          </p>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -153,7 +165,7 @@ export default {
       dateOptions
     );
 
-    const apiKey = "1172a4c644a6024fb268a0bf31b686a7";
+    const apiKey = import.meta.env.VITE_API_KEY;
     const weatherResponse = await fetch(
       `https://api.openweathermap.org/data/2.5/weather?q=Paris&appid=${apiKey}&units=metric`
     );
@@ -163,13 +175,11 @@ export default {
     this.temperature = Math.round(weatherData.main.temp);
     this.humidity = weatherData.main.humidity;
 
-    // Setup the Intersection Observer
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          // When the section comes into view
           this.startAnimation();
-          observer.unobserve(this.$refs.observedSection); // Stop observing after the first trigger
+          observer.unobserve(this.$refs.observedSection);
         }
       });
     });
@@ -183,7 +193,7 @@ export default {
       return directions[index % 8];
     },
     startAnimation() {
-      this.$refs.observedSection.classList.add("animate"); // Add a class to trigger the animation
+      this.$refs.observedSection.classList.add("animate");
     },
   },
 };
@@ -192,7 +202,7 @@ export default {
 <style scoped>
 @keyframes spin-grow {
   0% {
-    transform: rotate(0deg) scale(0) translate(200px, -200px); /* Départ du coin supérieur droit */
+    transform: rotate(0deg) scale(0) translate(200px, -200px);
     opacity: 1;
     filter: blur(5px);
   }
@@ -212,7 +222,7 @@ export default {
     filter: blur(5px);
   }
   40% {
-    transform: rotate(1440deg) scale(0.2) translate(0px, 0px); /* Approche du centre */
+    transform: rotate(1440deg) scale(0.2) translate(0px, 0px);
     opacity: 1;
     filter: blur(5px);
   }
@@ -250,7 +260,10 @@ export default {
 .animate {
   animation: spin-grow 1.2s linear;
 }
-
+.gif {
+  width: 75%;
+  margin: auto 10%;
+}
 .bod {
   font-family: "Droid Serif", serif;
   font-size: 1vw;
@@ -258,7 +271,7 @@ export default {
   background: url("https://i.pinimg.com/originals/5b/b1/3b/5bb13b2f73e906861918ddbde3eb09f0.jpg");
   background-position: center;
   background-repeat: repeat;
-  background-size:contain;
+  background-size: contain;
   padding: 1px;
   height: 100vh;
   overflow: hidden;
@@ -269,14 +282,14 @@ export default {
 
 h1 {
   font-family: "Droid Serif", serif;
-  font-size: 2.5vw;
+  font-size: calc(1.5vw + 1vh);
   text-align: center;
-  margin: 10 0;
+  margin: 1rem 0;
 }
 header {
   font-family: "Playfair Display", serif;
   font-weight: 900;
-  font-size: 4vw;
+  font-size: calc(2vw + 2vh);
   text-transform: uppercase;
   display: inline-block;
   line-height: 1.2;
@@ -307,14 +320,14 @@ p {
 }
 .titleContent {
   font-family: "Droid Serif", serif;
-  font-size: 1.6vw;
+  font-size: calc(1vw + 1vh);
   font-weight: bold;
   margin-bottom: 5px;
   color: #111111;
 }
 .textContent {
   font-family: "Droid Serif", serif;
-  font-size: 1vw;
+  font-size: calc(0.6vw + 0.6vh);
   line-height: 1.4;
   color: #000000;
 }
@@ -337,35 +350,35 @@ p {
   width: 10vw;
   border: 3px double #2f2f2f;
   padding: 5px;
-  font-size: 0.8vw;
+  font-size: calc(0.4vw + 0.4vh);
 }
 @media (max-width: 1300px) {
 }
 @media (max-width: 900px) {
   .container {
-    max-width: 48%; /* Permet d'avoir deux conteneurs par ligne */
-    flex: 1 1 48%; /* Assure que chaque conteneur prend 48% de l'espace disponible */
+    max-width: 48%;
+    flex: 1 1 48%;
   }
   h1 {
-    font-size: 5vw; /* Augmente la taille de la police du titre principal */
+    font-size: 5vw;
   }
-  header{
+  header {
     margin-top: 30px;
     margin-bottom: 15px;
     font-size: 6vw;
   }
   .titleContent {
-    font-size: 3vw; /* Augmente la taille de la police des titres des conteneurs */
+    font-size: 3vw;
   }
   .textContent {
-    font-size: 2.2vw; /* Augmente la taille de la police du texte des conteneurs */
+    font-size: 2.2vw;
   }
   img {
-    width: 100%; /* Assure que l'image prend toute la largeur de son conteneur */
-    height: auto; /* Maintient le ratio d'aspect de l'image */
+    width: 100%;
+    height: auto;
   }
   .divider {
-    display: none; /* Cache le diviseur pour un aspect plus propre */
+    display: none;
   }
 }
 </style>
