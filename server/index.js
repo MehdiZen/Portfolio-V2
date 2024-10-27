@@ -5,7 +5,14 @@ import { getDB } from "./connexion.js";
 
 const app = express();
 
-app.use(cors({ origin: "http://127.0.0.1:5173" }));
+const allowedOrigins = [
+    "http://127.0.0.1:5173", 
+    "https://671e91131328edc20a063305--tisseurduweb.netlify.app",
+    "https://tisseurduweb.netlify.app",
+    "https://tisseurduweb.com"
+];
+
+app.use(cors({ origin: allowedOrigins }));
 app.get("/", async (req, res) => {
     try {
         const db = await getDB(); 

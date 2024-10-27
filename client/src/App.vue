@@ -1,9 +1,9 @@
 <template>
   <div class="container">
-    <div class="flags">
+    <!-- <div class="flags">
       <span class="fi fi-fr mr-4 cursor-pointer flag" id="french"></span>
       <span class="fi fi-gb mr-4 cursor-pointer flag" id="english"></span>
-    </div>
+    </div> -->
     <header>
       <Header />
     </header>
@@ -16,8 +16,11 @@
     <section>
       <Project />
     </section>
+    <section>
+      <Contact />
+    </section>
   </div>
-  <RouterView />
+  <!-- <RouterView /> -->
 </template>
 
 <script>
@@ -25,6 +28,7 @@
 import Header from "@/components/views/Header.vue";
 import Intro from "@/components/views/Intro.vue";
 import Stack from "@/components/views/Stack.vue";
+import Contact from "@/components/views/Contact.vue";
 import Project from "@/components/views/Projects.vue";
 
 export default {
@@ -33,6 +37,7 @@ export default {
     Intro,
     Stack,
     Project,
+    Contact,
   },
 
   data() {

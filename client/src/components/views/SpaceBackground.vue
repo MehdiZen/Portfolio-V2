@@ -103,7 +103,7 @@ export default {
             (Math.random() - 0.5) * 300; // Y: entre -150 et 150
         }
         particleSystem.geometry.attributes.position.needsUpdate = true;
-      }, 20000);
+      }, 40000);
 
       window.addEventListener("resize", () => {
         camera.aspect = window.innerWidth / window.innerHeight;
