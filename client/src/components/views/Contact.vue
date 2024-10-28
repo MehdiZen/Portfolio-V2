@@ -1,107 +1,267 @@
 <template>
-  <section class="contact">
-    <div class="contact-header">
-      <h3 id="co-title">Contact</h3>
-      <h1 id="co-text">L'innovation commence par une simple conversation.</h1>
+  <div>
+    <div class="mt-4 waiting" ref="screenElement" :class="{ 'fade-out': !isAnimating }">
+      <transition name="fade">
+        <div class="screen" v-if="isAnimating">
+          <ul class="timeline">
+            <li class="step">
+              <span class="circle circle-flash-1"></span>
+            </li>
+            <li class="step">
+              <span class="circle circle-flash-2"></span>
+            </li>
+            <li class="step">
+              <span class="circle circle-flash-3"></span>
+            </li>
+            <li class="step">
+              <span class="circle circle-flash-4"></span>
+            </li>
+            <li class="step">
+              <span class="circle circle-flash-5"></span>
+            </li>
+            <li class="step">
+              <span class="circle circle-flash-6"></span>
+            </li>
+          </ul>
+          <div class="circle circle-main"></div>
+        </div>
+      </transition>
     </div>
 
-    <div class="contact-content">
-      <div class="contact-form">
-        <h3 id="form-title">Assez parlé de moi,<br/> parlons de nous.</h3>
-        <form
-          :action="mailUrl"
-          method="POST"
-        >
-          <fieldset>
-            <div class="form-field">
-              <input
-                name="name"
-                type="text"
-                id="name"
-                placeholder="Votre nom"
-                required
-              />
-            </div>
-            <div class="form-field">
-              <input
-                name="email"
-                type="email"
-                id="email"
-                placeholder="Votre mail"
-                required
-              />
-            </div>
-            <div class="form-field">
-              <input
-                name="Subject"
-                type="text"
-                id="subject"
-                placeholder="Sujet"
-                required
-              />
-            </div>
-            <div class="form-field">
-              <textarea
-                name="message"
-                type="text"
-                id="message"
-                placeholder="Votre message"
-                required
-              ></textarea>
-            </div>
-          </fieldset>
-          <input id="form-btn" type="submit" value="send" />
-        </form>
-      </div>
-
-      <div class="CV">
-        <img src="https://i.ibb.co/GTfcT6m/CV.jpg" alt="CV" width="auto" />
-        <div class="download-container">
-          <a
-            href="../../assets/CV_Mehdi_Zenati.pdf"
-            class="download"
-            id="pdf-download"
-            download
-          >
-            Télécharger en PDF <i class="ml-2 pi pi-download"></i>
-          </a>
+    <transition name="fade">
+      <section class="contact hidden" ref="contactSection">
+        <div class="contact-header">
+          <h3 id="co-title">Contact</h3>
+          <h1 id="co-text">L'innovation commence par une simple conversation.</h1>
         </div>
-      </div>
 
-      <div class="contact-info">
-        <img
-        class="pp"
-        src="../../assets/download20200101143704.png"
-        width="200vw"
-        />
-        <h3>Contactez moi</h3>
-        <a href="mailto:mehdi.zenati1999@gmail.com">
-          <p>mehdi.zenati1999@gmail.com</p></a
-        >
-        <h3>Mes réseaux</h3>
-        <div class="contact-links">
-          <a href="https://www.linkedin.com/in/mehdizen"
-            ><i class="pi pi-linkedin"></i
-          ></a>
-          <a href="https://github.com/MehdiZen"><i class="pi pi-github"></i></a>
+        <div class="contact-content">
+          <div class="contact-form">
+            <h3 id="form-title">
+              Assez parlé de moi,<br />
+              parlons de nous.
+            </h3>
+            <form :action="mailUrl" method="POST">
+              <fieldset>
+                <div class="form-field">
+                  <input name="name" type="text" id="name" placeholder="Votre nom" required />
+                </div>
+                <div class="form-field">
+                  <input name="email" type="email" id="email" placeholder="Votre mail" required />
+                </div>
+                <div class="form-field">
+                  <input name="subject" type="text" id="subject" placeholder="Sujet" required />
+                </div>
+                <div class="form-field">
+                  <textarea name="message" type="text" id="message" placeholder="Votre message" required></textarea>
+                </div>
+              </fieldset>
+              <input id="form-btn" type="submit" value="send" />
+            </form>
+          </div>
+
+          <div class="CV">
+            <img src="https://i.ibb.co/GTfcT6m/CV.jpg" alt="CV" width="auto" />
+            <div class="download-container">
+              <a href="../../assets/CV_Mehdi_Zenati.pdf" class="download" id="pdf-download" download>
+                Télécharger en PDF <i class="ml-2 pi pi-download"></i>
+              </a>
+            </div>
+          </div>
+
+          <div class="contact-info">
+            <img class="pp" src="../../assets/download20200101143704.png" width="200vw" />
+            <h3>Contactez-moi</h3>
+            <a href="mailto:mehdi.zenati1999@gmail.com">
+              <p>mehdi.zenati1999@gmail.com</p>
+            </a>
+            <h3>Mes réseaux</h3>
+            <div class="contact-links">
+              <a href="https://www.linkedin.com/in/mehdizen"><i class="pi pi-linkedin"></i></a>
+              <a href="https://github.com/MehdiZen"><i class="pi pi-github"></i></a>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-  </section>
+      </section>
+    </transition>
+  </div>
 </template>
+
 
 <script>
 export default {
   data() {
     return {
       mailUrl: import.meta.env.VITE_MAIL_URL,
+      isAnimating: false,
     };
+  },
+  methods: {
+  showContainers() {
+    this.isAnimating = true;
+
+    setTimeout(() => {
+      this.$refs.screenElement.classList.add('fade-out');
+
+      setTimeout(() => {
+        this.isAnimating = false; 
+        this.$refs.contactSection.classList.remove('hidden');
+        this.$refs.contactSection.classList.add('fade-in');
+
+        setTimeout(() => {
+          this.$refs.contactSection.style.opacity = 1;
+        }, 50); 
+      }, 1000);
+    }, 8000);
+  },
+},
+  mounted() {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          observer.unobserve(entry.target);
+          this.showContainers();
+        }
+      });
+    });
+
+    observer.observe(this.$refs.screenElement);
   },
 };
 </script>
 
+
 <style lang="css" scoped>
+.fade-in {
+  opacity: 1;
+  transition: opacity 1s ease;
+}
+
+.hidden {
+  opacity: 0;
+  transition: opacity 1s ease, visibility 1s ease;
+  display: none;
+}
+.fade-out {
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+.screen {
+  background: black !important;
+  height: 100%;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.circle {
+  background: white;
+  background-image: url("../../assets/download20200101143704.png");
+  background-size: cover;
+  border-radius: 60px;
+  height: 120px;
+  position: absolute;
+  width: 120px;
+}
+
+.circle-main {
+  left: -120px;
+  margin-top: -60px;
+  top: 50%;
+  animation: circle-slide 12s linear forwards;
+}
+
+.timeline {
+  display: block;
+  height: 120px;
+  margin-top: -60px;
+  position: absolute;
+  top: 50%;
+  width: 100%;
+}
+
+.timeline .step {
+  display: block;
+  float: left;
+  height: 120px;
+  margin: 0;
+  position: relative;
+  width: 200px;
+}
+
+.timeline .step .circle {
+  background: transparent;
+  position: absolute;
+  right: -60px;
+}
+
+.timeline .step .circle-flash-1 {
+  animation: circle-flash 1s 0.8s;
+}
+
+.timeline .step .circle-flash-2 {
+  animation: circle-flash 1s 1.4s;
+}
+
+.timeline .step .circle-flash-3 {
+  animation: circle-flash 1s 2s;
+}
+
+.timeline .step .circle-flash-4 {
+  animation: circle-flash 1s 2.6s;
+}
+
+.timeline .step .circle-flash-5 {
+  animation: circle-flash 1s 3.2s;
+}
+.timeline .step .circle-flash-6 {
+  animation: circle-flash 1s 3.8s;
+}
+
+@keyframes circle-flash {
+  0% {
+    background: white;
+  }
+  100% {
+    background: transparent;
+  }
+}
+
+@keyframes circle-slide {
+  44% {
+    transform: scale(1);
+    left: 90vw;
+    top: 50%
+  }
+  55%,
+  58% {
+    transform: scale(1.7);
+    left: 82.75vw;
+    top: 34%
+  }
+  100% {
+    transform: scale(1.7);
+    left: 82.75vw;
+    top: 34%
+  }
+}
+
+@keyframes gunbarrel-bg {
+  0% {
+    opacity: 0;
+  }
+  6.25% {
+    opacity: 1;
+  }
+  100% {
+    left: -120px;
+    opacity: 1;
+  }
+}
+
+/* Above here is the animation */
 .contact {
+  opacity: 0;
+  transition: opacity 1s ease, visibility 1s ease;
   display: flex;
   flex-direction: column;
   position: relative;
@@ -114,9 +274,10 @@ export default {
     ),
     url("https://i.imgur.com/3vacZxN.jpeg") center no-repeat;
   background-size: cover;
+  height: 100vh;
+  width: 100%;
 }
 .pp {
-  background-color: white;
   border-radius: 50%;
   margin-bottom: 6vh;
 }
@@ -159,7 +320,6 @@ export default {
   justify-content: space-between;
   align-items: flex-end;
   margin-left: 2vw;
-  
 }
 .CV img {
   width: 90%;
@@ -186,18 +346,19 @@ export default {
   align-items: center;
   padding: 10px 20px;
   background-color: #99999900;
-  border: rgb(255, 255, 255) 1px solid;
+  border: rgb(110, 110, 110) 1px solid;
   color: white;
   text-decoration: none;
   font-size: 0.6vw;
   transition: background-color 0.3s ease;
   margin-bottom: 3vh;
 }
-#pdf-download .pi{
+#pdf-download .pi {
   color: grey;
 }
 #pdf-download:hover {
-  background-color: #626262;
+  background-color: #62626256;
+  transform: translateY(-2.5%);
 }
 #pdf-download:hover .pi {
   transform: scale(1.2);
@@ -308,7 +469,7 @@ textarea,
   cursor: pointer;
   transition: all 0.3s ease;
 }
-.contact-links .pi:hover{
+.contact-links .pi:hover {
   transform: scale(1.2);
 }
 @media screen and (max-width: 960px) {

@@ -1,5 +1,16 @@
 <template>
   <div class="container">
+    <div class="audio-player">
+    <audio ref="audio" :src="audioSrc" @ended="handleEnd" />
+    <div class="controls">
+      <transition name="fade">
+      <span v-if="showMessage" class="message">{{ message }}</span>
+      </transition>
+      <button @click="toggleAudio">
+        <i :class="isPlaying ? 'pi pi-pause' : 'pi pi-play'"></i>
+      </button>
+      </div>
+  </div>
     <!-- <div class="flags">
       <span class="fi fi-fr mr-4 cursor-pointer flag" id="french"></span>
       <span class="fi fi-gb mr-4 cursor-pointer flag" id="english"></span>
@@ -30,6 +41,7 @@ import Intro from "@/components/views/Intro.vue";
 import Stack from "@/components/views/Stack.vue";
 import Contact from "@/components/views/Contact.vue";
 import Project from "@/components/views/Projects.vue";
+import songtheme from "./assets/songtheme.mp3";
 
 export default {
   components: {
@@ -41,12 +53,90 @@ export default {
   },
 
   data() {
-    return {};
+    
+    return {
+      audioSrc: songtheme,
+      isPlaying: false,
+      showMessage: true, 
+      message: "Pour une exploration en musique",
+    };
+  },
+  mounted(){
+    setTimeout(() => {
+      this.showMessage = false;
+    }, 5000);
+  },
+  methods: {
+    toggleAudio() {
+      if (this.isPlaying) {
+        this.pauseAudio();
+      } else {
+        this.playAudio();
+      }
+    },
+    playAudio() {
+      this.$refs.audio.play();
+      this.isPlaying = true; 
+    },
+    pauseAudio() {
+      this.$refs.audio.pause();
+      this.isPlaying = false; 
+    },
+    handleEnd() {
+      console.log("La musique a fini de jouer !");
+      this.isPlaying = false; 
+    },
   },
 };
 </script>
 
 <style scoped>
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.fade-leave-to {
+  opacity: 0;
+  transform: translateY(-10px);
+}
+
+.audio-player {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  border-radius: 5px;
+  padding: 10px;
+  z-index: 100;
+}
+
+.controls {
+  margin-top: 10px;
+}
+
+button {
+  color: yellow;
+  text-shadow: 1px 1px 1px  black;
+  background: none;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 5px 10px;
+  margin: 0 5px;
+  transition: background-color 0.3s, transform 0.3s; /* Transition pour l'effet visuel */
+}
+
+button:focus {
+  outline: none; /* Enlève le contour par défaut */
+}
+
+button:active {
+  transform: scale(0.95); /* Légère réduction lors de l'appui */
+}
+
+button[disabled] {
+  background-color: #ccc; /* État désactivé si nécessaire */
+  cursor: not-allowed; /* Curseur de non-autorisé */
+}
 .container {
   height: 100vh;
   scroll-snap-type: y mandatory;
