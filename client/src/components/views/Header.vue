@@ -5,11 +5,10 @@
       <h1 class="title">Développeur Full Stack</h1>
     </div>
     <div class="scroller flex flex-column align-items-center">
-      <div class="text-2xl text">Scrollez à travers les univers...</div>
+      <div class="text-2xl text">Scrollez à travers mes univers...</div>
       <span class="pi pi-arrow-circle-down breathing"></span>
     </div>
   </div>
-  <RouterView />
 </template>
 
 <script lang="ts">

@@ -128,6 +128,7 @@ export default {
   position: relative;
   z-index: 2;
   user-select: none;
+  height: 100%;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -170,11 +171,11 @@ export default {
   justify-content: center;
   align-items: flex-start;
   gap: 20px;
-  height: auto;
+  height: 100%;
   min-height: calc(90vh - 40px);
-  padding: 0 15vw;
   padding-top: 8vh;
   overflow: hidden;
+  margin-bottom: 5rem;
 }
 
 .card-item {

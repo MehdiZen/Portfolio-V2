@@ -16,7 +16,8 @@
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
     "format": "prettier --write src/",
     "deploy-test": "netlify deploy",
-    "deploy":"netlify deploy --prod --dir=dist"
+    "deploy":"netlify deploy --prod --dir=dist",
+    "lazy": "git add . && git commit -m'lazypush' && git push"
   },
   "dependencies": {
     "@primevue/themes": "^4.0.7",

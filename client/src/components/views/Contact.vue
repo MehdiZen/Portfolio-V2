@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="whole">
     <div class="mt-4 waiting" ref="screenElement" :class="{ 'fade-out': !isAnimating }">
       <transition name="fade">
         <div class="screen" v-if="isAnimating">
@@ -22,8 +22,13 @@
             <li class="step">
               <span class="circle circle-flash-6"></span>
             </li>
+            <li class="step">
+              <span class="circle circle-flash-7"></span>
+            </li>
           </ul>
-          <div class="circle circle-main"></div>
+          <div class="circle circle-main">
+            <div class="ppcircle"></div>
+          </div>
         </div>
       </transition>
     </div>
@@ -132,6 +137,15 @@ export default {
 
 
 <style lang="css" scoped>
+.ppcircle{
+  height: 100%;
+  width: 100%;
+  border-radius: 60px;
+  background-image: url("../../assets/download20200101143704.png");
+  background-size: cover;
+  animation: ppcircle-fade 12s forwards;
+}
+
 .fade-in {
   opacity: 1;
   transition: opacity 1s ease;
@@ -148,25 +162,23 @@ export default {
 }
 .screen {
   background: black !important;
-  height: 100%;
+  height: 100vh;
   margin: 0 auto;
   width: 100%;
 }
-
 .circle {
   background: white;
-  background-image: url("../../assets/download20200101143704.png");
   background-size: cover;
   border-radius: 60px;
   height: 120px;
-  position: absolute;
+  position: relative;
   width: 120px;
 }
 
 .circle-main {
   left: -120px;
   margin-top: -60px;
-  top: 50%;
+  top: 44%;
   animation: circle-slide 12s linear forwards;
 }
 
@@ -216,6 +228,10 @@ export default {
 .timeline .step .circle-flash-6 {
   animation: circle-flash 1s 3.8s;
 }
+.timeline .step .circle-flash-7 {
+  animation: circle-flash 1s 4.4s;
+}
+
 
 @keyframes circle-flash {
   0% {
@@ -230,21 +246,34 @@ export default {
   44% {
     transform: scale(1);
     left: 90vw;
-    top: 50%
+    top: 44%
   }
   55%,
   58% {
     transform: scale(1.7);
     left: 82.75vw;
-    top: 34%
+    top: 28%
   }
   100% {
     transform: scale(1.7);
     left: 82.75vw;
-    top: 34%
+    top: 28%
   }
 }
-
+@keyframes ppcircle-fade {
+  0% {
+    opacity: 0; 
+  }
+  50% {
+    opacity: 0; 
+  }
+  70%{
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 @keyframes gunbarrel-bg {
   0% {
     opacity: 0;
@@ -450,7 +479,7 @@ textarea,
   font-family: "Montserrat", sans-serif;
   text-decoration: none;
   color: #666;
-  font-size: 0.8rem;
+  font-size: 0.8rem; 
   letter-spacing: 2px;
   margin-bottom: 5rem;
   transition: all 0.3s ease;
@@ -460,7 +489,9 @@ textarea,
   transform: translateY(-2.5%);
   color: #999;
 }
-
+textarea{
+  resize: none;
+}
 .contact-info .pi {
   font-size: 1.5rem;
   line-height: 3rem;
