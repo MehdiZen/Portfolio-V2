@@ -294,7 +294,7 @@ export default defineComponent({
 
 .table-wrapper {
   display: flex;
-  align-items: flex-start; /* Alignement en haut pour chaque tableau */
+  align-items: flex-start;
   width: 100%;
 }
 
@@ -363,9 +363,11 @@ export default defineComponent({
   transition: transform 0.3s ease;
 }
 .container.active {
-  transform: scale(1.1); 
+  transform: scale(1.1);
   box-shadow: 0px 0px 40px #00d742;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .languages {
@@ -530,7 +532,7 @@ span {
   font-family: monospace;
   color: #00fa00;
 }
-@media (max-width: 768px) {
+@media(max-width: 600px) AND (max-height: 1000px) {
   .container {
     font-size: 1.1em;
     height: 15vh;
@@ -540,10 +542,15 @@ span {
     max-width: 35%;
   }
   .container.active {
-  transform: scale(1.1); 
-  box-shadow: 0px 0px 5px #00d742;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
+    transform: scale(1.1);
+    box-shadow: 0px 0px 5px #00d742;
+    transition:
+      transform 0.3s ease,
+      box-shadow 0.3s ease;
+  }
+  .database {
+    font-size: 0.9em;
+  }
   h3 {
     font-size: 1em;
   }
@@ -553,24 +560,29 @@ span {
   }
 
   .sql-table {
-    font-size: 10px; /* Plus petit pour les petits écrans */
+    font-size: 1.2em;
   }
 
   .line1,
   .line2,
   .line3,
   .line4 {
-    font-size: 0.9em; /* Plus petit aussi */
+    font-size: 0.9em;
   }
 
   .containerWrapper {
     padding: 10px 0px;
     margin-top: 10px;
-    gap: 10px; /* Espace entre les containers horizontalement */
+    gap: 10px; 
   }
 
   .sql-table {
-    width: 100%; /* Utiliser toute la largeur sur petit écran */
+    width: 100%;
+  }
+}
+@media (max-width: 600px) AND (max-height: 740px) {
+  .database {
+    font-size: 0.7em;
   }
 }
 @-webkit-keyframes blink {

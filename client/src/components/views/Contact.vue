@@ -1,6 +1,10 @@
 <template>
   <div class="whole">
-    <div class="mt-4 waiting" ref="screenElement" :class="{ 'fade-out': !isAnimating }">
+    <div
+      class="mt-4 waiting"
+      ref="screenElement"
+      :class="{ 'fade-out': !isAnimating }"
+    >
       <transition name="fade">
         <div class="screen" v-if="isAnimating">
           <ul class="timeline">
@@ -37,7 +41,9 @@
       <section class="contact hidden" ref="contactSection">
         <div class="contact-header">
           <h3 id="co-title">Contact</h3>
-          <h1 id="co-text">L'innovation commence par une simple conversation.</h1>
+          <h1 id="co-text">
+            L'innovation commence par une simple conversation.
+          </h1>
         </div>
 
         <div class="contact-content">
@@ -49,16 +55,40 @@
             <form :action="mailUrl" method="POST">
               <fieldset>
                 <div class="form-field">
-                  <input name="name" type="text" id="name" placeholder="Votre nom" required />
+                  <input
+                    name="name"
+                    type="text"
+                    id="name"
+                    placeholder="Votre nom"
+                    required
+                  />
                 </div>
                 <div class="form-field">
-                  <input name="email" type="email" id="email" placeholder="Votre mail" required />
+                  <input
+                    name="email"
+                    type="email"
+                    id="email"
+                    placeholder="Votre mail"
+                    required
+                  />
                 </div>
                 <div class="form-field">
-                  <input name="subject" type="text" id="subject" placeholder="Sujet" required />
+                  <input
+                    name="subject"
+                    type="text"
+                    id="subject"
+                    placeholder="Sujet"
+                    required
+                  />
                 </div>
                 <div class="form-field">
-                  <textarea name="message" type="text" id="message" placeholder="Votre message" required></textarea>
+                  <textarea
+                    name="message"
+                    type="text"
+                    id="message"
+                    placeholder="Votre message"
+                    required
+                  ></textarea>
                 </div>
               </fieldset>
               <input id="form-btn" type="submit" value="send" />
@@ -68,30 +98,44 @@
           <div class="CV">
             <img src="https://i.ibb.co/GTfcT6m/CV.jpg" alt="CV" width="auto" />
             <div class="download-container">
-              <a href="../../assets/CV_Mehdi_Zenati.pdf" class="download" id="pdf-download" download>
-                Télécharger en PDF <i class="ml-2 pi pi-download"></i>
+              <a
+                href="../../assets/CV_Mehdi_Zenati.pdf"
+                class="download"
+                id="pdf-download"
+                download
+              >
+                <p class="downloadtext">Télécharger en PDF</p>
+                <i class="ml-2 pi pi-download"></i>
               </a>
             </div>
           </div>
 
           <div class="contact-info">
-            <img class="pp" src="../../assets/download20200101143704.png" width="200vw" />
+            <img
+              class="pp"
+              src="../../assets/download20200101143704.png"
+              width="200vw"
+            />
             <h3>Contactez-moi</h3>
             <a href="mailto:mehdi.zenati1999@gmail.com">
               <p>mehdi.zenati1999@gmail.com</p>
             </a>
             <h3>Mes réseaux</h3>
             <div class="contact-links">
-              <a href="https://www.linkedin.com/in/mehdizen"><i class="pi pi-linkedin"></i></a>
-              <a href="https://github.com/MehdiZen"><i class="pi pi-github"></i></a>
+              <a href="https://www.linkedin.com/in/mehdizen"
+                ><i class="pi pi-linkedin"></i
+              ></a>
+              <a href="https://github.com/MehdiZen"
+                ><i class="pi pi-github"></i
+              ></a>
             </div>
+            <div class="ending">© Mehdi Zenati. Tous droits réservés</div>
           </div>
         </div>
       </section>
     </transition>
   </div>
 </template>
-
 
 <script>
 export default {
@@ -102,24 +146,24 @@ export default {
     };
   },
   methods: {
-  showContainers() {
-    this.isAnimating = true;
-
-    setTimeout(() => {
-      this.$refs.screenElement.classList.add('fade-out');
+    showContainers() {
+      this.isAnimating = true;
 
       setTimeout(() => {
-        this.isAnimating = false; 
-        this.$refs.contactSection.classList.remove('hidden');
-        this.$refs.contactSection.classList.add('fade-in');
+        this.$refs.screenElement.classList.add("fade-out");
 
         setTimeout(() => {
-          this.$refs.contactSection.style.opacity = 1;
-        }, 50); 
-      }, 1000);
-    }, 8000);
+          this.isAnimating = false;
+          this.$refs.contactSection.classList.remove("hidden");
+          this.$refs.contactSection.classList.add("fade-in");
+
+          setTimeout(() => {
+            this.$refs.contactSection.style.opacity = 1;
+          }, 50);
+        }, 1000);
+      }, 8000);
+    },
   },
-},
   mounted() {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
@@ -135,9 +179,8 @@ export default {
 };
 </script>
 
-
 <style lang="css" scoped>
-.ppcircle{
+.ppcircle {
   height: 100%;
   width: 100%;
   border-radius: 60px;
@@ -153,7 +196,9 @@ export default {
 
 .hidden {
   opacity: 0;
-  transition: opacity 1s ease, visibility 1s ease;
+  transition:
+    opacity 1s ease,
+    visibility 1s ease;
   display: none;
 }
 .fade-out {
@@ -232,7 +277,6 @@ export default {
   animation: circle-flash 1s 4.4s;
 }
 
-
 @keyframes circle-flash {
   0% {
     background: white;
@@ -246,28 +290,28 @@ export default {
   44% {
     transform: scale(1);
     left: 90vw;
-    top: 44%
+    top: 44%;
   }
   55%,
   58% {
     transform: scale(1.7);
     left: 82.75vw;
-    top: 28%
+    top: 28%;
   }
   100% {
     transform: scale(1.7);
     left: 82.75vw;
-    top: 28%
+    top: 28%;
   }
 }
 @keyframes ppcircle-fade {
   0% {
-    opacity: 0; 
+    opacity: 0;
   }
   50% {
-    opacity: 0; 
+    opacity: 0;
   }
-  70%{
+  70% {
     opacity: 1;
   }
   100% {
@@ -290,7 +334,9 @@ export default {
 /* Above here is the animation */
 .contact {
   opacity: 0;
-  transition: opacity 1s ease, visibility 1s ease;
+  transition:
+    opacity 1s ease,
+    visibility 1s ease;
   display: flex;
   flex-direction: column;
   position: relative;
@@ -305,6 +351,7 @@ export default {
   background-size: cover;
   height: 100vh;
   width: 100%;
+  overflow-y: none;
 }
 .pp {
   border-radius: 50%;
@@ -370,15 +417,15 @@ export default {
 #pdf-download {
   font-family: Arial, Helvetica, sans-serif;
   display: inline-flex;
-  width: 150%;
+  width: 15vh;
   justify-content: center;
   align-items: center;
-  padding: 10px 20px;
+  padding: 0px 10px;
   background-color: #99999900;
   border: rgb(110, 110, 110) 1px solid;
   color: white;
   text-decoration: none;
-  font-size: 0.6vw;
+  font-size: 0.5vw;
   transition: background-color 0.3s ease;
   margin-bottom: 3vh;
 }
@@ -479,7 +526,7 @@ textarea,
   font-family: "Montserrat", sans-serif;
   text-decoration: none;
   color: #666;
-  font-size: 0.8rem; 
+  font-size: 0.8rem;
   letter-spacing: 2px;
   margin-bottom: 5rem;
   transition: all 0.3s ease;
@@ -489,7 +536,7 @@ textarea,
   transform: translateY(-2.5%);
   color: #999;
 }
-textarea{
+textarea {
   resize: none;
 }
 .contact-info .pi {
@@ -503,7 +550,24 @@ textarea{
 .contact-links .pi:hover {
   transform: scale(1.2);
 }
-@media screen and (max-width: 960px) {
+.ending {
+  text-align: center;
+  width: 100%;
+  font-family: "Arial", sans-serif;
+  font-size: 0.5vw;
+  line-height: 1.5;
+  color: #ffffff;
+  text-shadow: 1px 1px black;
+  margin-top: 5vh;
+}
+@media screen and (max-width: 1000px) {
+  .ending {
+    font-size: 2vw;
+
+  }
+  .contact {
+    overflow-y: auto;
+  }
   .contact-content {
     display: flex;
     flex-direction: column;
@@ -535,6 +599,48 @@ textarea{
 
   .contact-form {
     padding: 2.5rem;
+  }
+  .CV {
+    max-width: 100%;
+    display: block;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+  .CV img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease-in-out;
+    margin-bottom: 0;
+  }
+  .download .pi {
+    color: white !important;
+  }
+  #pdf-download {
+    font-family: Arial, Helvetica, sans-serif;
+    display: inline-flex;
+    width: 150%;
+    justify-content: center;
+    align-items: center;
+    padding: 0px 0px;
+    background-color: #99999970;
+    border: rgb(110, 110, 110) 1px solid;
+    color: white;
+    text-decoration: none;
+    font-size: 3vw;
+    transition: background-color 0.3s ease;
+    margin-bottom: 3vh;
+  }
+  .download-container {
+    margin: 0;
+    width: 100%;
+  }
+  .contact-links .pi {
+    color: rgb(39, 39, 39) !important;
+  }
+  .timeline {
+    display: none;
   }
 }
 

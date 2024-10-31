@@ -122,20 +122,20 @@ button {
   cursor: pointer;
   padding: 5px 10px;
   margin: 0 5px;
-  transition: background-color 0.3s, transform 0.3s; /* Transition pour l'effet visuel */
+  transition: background-color 0.3s, transform 0.3s; 
 }
 
 button:focus {
-  outline: none; /* Enlève le contour par défaut */
+  outline: none;
 }
 
 button:active {
-  transform: scale(0.95); /* Légère réduction lors de l'appui */
+  transform: scale(0.95); 
 }
 
 button[disabled] {
-  background-color: #ccc; /* État désactivé si nécessaire */
-  cursor: not-allowed; /* Curseur de non-autorisé */
+  background-color: #ccc; 
+  cursor: not-allowed; 
 }
 .container {
   height: 100vh;

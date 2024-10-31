@@ -158,11 +158,13 @@ export default {
   padding: 0;
   height: 4vh;
   margin: 0;
+  z-index: 30;
 }
 
 .project-title p {
   font-size: 46px;
   color: yellow;
+  text-shadow: 1px 1px black ;
 }
 
 .cards-container {
@@ -213,25 +215,52 @@ export default {
   font-size: 14px;
   color: rgb(0, 128, 75);
 }
-
 @media screen and (max-width: 1200px) {
+  .cards-container {
+    overflow: auto; 
+  }
   .card-item {
     flex: 1 1 calc(33.33% - 40px);
     max-width: 33.33%;
   }
 }
-
+.cards-container {
+  padding-bottom: 30%; 
+}
 @media screen and (max-width: 768px) {
+  .project-title {
+  position: relative;
+  top: -2%;
+  width: 100vw;
+  display: flex;
+  justify-content: left;
+  padding: 0;
+  height: 4vh;
+  margin: 0;
+  z-index: 30;
+}
+
+.project-title p {
+  font-size: 38px;
+  color: yellow;
+  text-shadow: 1px 1px black;
+}
+
   .card-item {
     flex: 1 1 calc(50% - 40px);
     max-width: 50%;
   }
 }
-
+.cards-container {
+  padding-bottom: 30%; 
+}
 @media screen and (max-width: 576px) {
   .card-item {
     flex: 1 1 100%;
-    max-width: 100%;
+    max-width: 80%;
   }
+}
+.cards-container {
+  padding-bottom: 30%; 
 }
 </style>

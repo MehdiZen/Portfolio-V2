@@ -5,7 +5,7 @@
       <h1 class="title">Développeur Full Stack</h1>
     </div>
     <div class="scroller flex flex-column align-items-center">
-      <div class="text-2xl text">Scrollez à travers mes univers...</div>
+      <div class="text">Scrollez à travers mes univers...</div>
       <span class="pi pi-arrow-circle-down breathing"></span>
     </div>
   </div>
@@ -78,7 +78,7 @@ export default {
   align-items: center;
 }
 
-.scroller .text-2xl {
+.scroller .text {
   margin-bottom: 10px;
 }
 .breathing {
@@ -99,7 +99,7 @@ export default {
     margin-top: 0.5rem;
   }
 
-  .scroller .text-2xl {
+  .scroller .text {
     font-size: 0.2rem;
   }
 
@@ -121,10 +121,14 @@ export default {
     font-size: 2.5rem;
   }
 
-  .scroller .text-2xl {
+  .scroller .text {
+    width: 100%;
     font-size: 1.2rem;
+    margin-bottom: 1vh;
   }
-
+  .scroller{
+    bottom: 10%;
+  }
   .breathing {
     font-size: 2rem;
   }

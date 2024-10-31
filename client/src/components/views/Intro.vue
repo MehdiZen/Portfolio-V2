@@ -301,6 +301,7 @@ p {
 }
 .container-wrapper {
   display: flex;
+  position: relative;
   justify-content: space-between;
   flex-wrap: wrap;
   margin: 10px 2vw;
@@ -352,9 +353,9 @@ p {
   padding: 5px;
   font-size: calc(0.4vw + 0.4vh);
 }
-@media (max-width: 1300px) {
-}
-@media (max-width: 900px) {
+
+
+@media (max-width: 600px) and (max-height: 1000px) {
   .container {
     max-width: 48%;
     flex: 1 1 48%;
@@ -365,7 +366,7 @@ p {
   header {
     margin-top: 30px;
     margin-bottom: 15px;
-    font-size: 6vw;
+    font-size: 5vw;
   }
   .titleContent {
     font-size: 3vw;
@@ -374,11 +375,28 @@ p {
     font-size: 2.2vw;
   }
   img {
-    width: 100%;
-    height: auto;
+    width: 44% !important;
+    margin: 0 !important;
+    padding: 0;
+    position: absolute;
+    top: -90%;
+    right: 1vw;
+  }
+  .weatherforcastbox{
+    width: 15vw;
   }
   .divider {
     display: none;
+  }
+}
+@media (max-width: 600px) AND (max-height: 740px) {
+  img {
+    width: 44% !important;
+    margin: 0 !important;
+    padding: 0;
+    position: absolute;
+    top: -90%;
+    right: 1vw;
   }
 }
 </style>
