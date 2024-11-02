@@ -165,9 +165,8 @@ export default {
       dateOptions
     );
 
-    const apiKey = import.meta.env.VITE_API_KEY;
     const weatherResponse = await fetch(
-      `https://api.openweathermap.org/data/2.5/weather?q=Paris&appid=${apiKey}&units=metric`
+      "https://nodejs-production-82fd.up.railway.app/weather"
     );
     const weatherData = await weatherResponse.json();
     this.weatherInfo = `Weather forecast for the next 24 hours: ${weatherData.weather[0].description.charAt(0).toUpperCase() + weatherData.weather[0].description.slice(1)}`;
@@ -354,7 +353,6 @@ p {
   font-size: calc(0.4vw + 0.4vh);
 }
 
-
 @media (max-width: 600px) and (max-height: 1000px) {
   .container {
     max-width: 48%;
@@ -382,7 +380,7 @@ p {
     top: -90%;
     right: 1vw;
   }
-  .weatherforcastbox{
+  .weatherforcastbox {
     width: 15vw;
   }
   .divider {
