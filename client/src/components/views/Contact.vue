@@ -96,7 +96,7 @@
           </div>
 
           <div class="CV">
-            <img src="https://i.ibb.co/GTfcT6m/CV.jpg" alt="CV" width="auto" />
+            <img src="https://i.ibb.co/WNy1L2WR/MEHDI-ZENATI-D-veloppeur-Web-Full-Stack-Resume-page-0001.jpg" alt="CV" width="auto" />
             <div class="download-container">
               <a
                 href="../../assets/CV_Mehdi_Zenati.pdf"
