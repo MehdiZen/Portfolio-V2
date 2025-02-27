@@ -102,7 +102,7 @@
                 href="../../assets/CV_Mehdi_Zenati.pdf"
                 class="download"
                 id="pdf-download"
-                download
+                download="CV_Zenati_Mehdi"
               >
                 <p class="downloadtext">Télécharger en PDF</p>
                 <i class="ml-2 pi pi-download"></i>
